@@ -38,7 +38,7 @@ app.use('/api/v1/grocery', Grocery);
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 const server = app.listen(
   PORT,
