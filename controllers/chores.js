@@ -69,3 +69,16 @@ exports.getChoresByName = asyncHandler(async (req, res, next) => {
     data: chores,
   });
 });
+
+//@desc     Get All chores
+//@routes   GET /api/v1/chores/getchoresAssignedBy
+//@access   private
+exports.getChoresAssignedBy = asyncHandler(async (req, res, next) => {
+  const chores = await Chores.find({ assignedBy: req.params.name });
+
+  res.status(200).json({
+    success: true,
+    count: chores.length,
+    data: chores,
+  });
+});

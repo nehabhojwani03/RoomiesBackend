@@ -4,6 +4,9 @@ const ChoresSchema = new mongoose.Schema({
   assignTo: {
     type: String,
   },
+  assignedBy: {
+    type: String,
+  },
   deadline: {
     type: String,
   },
