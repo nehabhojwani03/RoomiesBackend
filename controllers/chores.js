@@ -6,10 +6,11 @@ const Chores = require('../models/Chores');
 //@routes   POST/api/v1/chores/addchores
 //@access   private
 exports.addChores = asyncHandler(async (req, res, next) => {
-  const { assignTo, deadline, taskDetails, priority } = req.body;
+  const { assignTo, assignedBy, deadline, taskDetails, priority } = req.body;
 
   const chores = await Chores.create({
     assignTo,
+    assignedBy,
     deadline,
     taskDetails,
     priority,
