@@ -15,6 +15,7 @@ const user = require('./routes/auth');
 const chores = require('./routes/chores');
 const users = require('./routes/users');
 const Grocery = require('./routes/Grocery');
+const Request = require('./routes/request');
 const app = express();
 
 //Body Parser
@@ -35,6 +36,7 @@ app.use('/api/v1/auth', user);
 app.use('/api/v1/user', users);
 app.use('/api/v1/chores', chores);
 app.use('/api/v1/grocery', Grocery);
+app.use('/api/v1/request', Request);
 
 app.use(errorHandler);
 

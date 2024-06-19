@@ -41,26 +41,23 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
 
-  interest: [
-    {
-      type: String,
-      required: [true, 'Please enter your interest'],
-    },
-  ],
+  gender: {
+    type: String,
+  },
+  interest: {
+    type: String,
+    required: [true, 'Please enter your interest'],
+  },
 
-  personalityTraits: [
-    {
-      type: Array,
-      required: [true, 'Please enter your personality traits'],
-    },
-  ],
+  personalityTraits: {
+    type: String,
+    required: [true, 'Please enter your personality traits'],
+  },
 
-  lifestyleHabits: [
-    {
-      type: Array,
-      required: [true, 'Please enter your lifestyle habits'],
-    },
-  ],
+  lifestyleHabits: {
+    type: String,
+    required: [true, 'Please enter your lifestyle habits'],
+  },
 
   password: {
     type: String,

@@ -9,10 +9,34 @@ const sendEmail = require('../utils/sendEmail');
 //@route    POST/api/v1/auth/register
 //@access   Public
 exports.register = asyncHandler(async (req, res, next) => {
-  const { username, name, email, phoneno, password } = req.body;
+  const {
+    username,
+    name,
+    email,
+    phoneno,
+    password,
+    photos,
+    bio,
+    gender,
+    interest,
+    personalityTraits,
+    lifestyleHabits,
+  } = req.body;
 
   //create user
-  const user = await User.create({ username, name, email, phoneno, password });
+  const user = await User.create({
+    username,
+    name,
+    email,
+    phoneno,
+    password,
+    photos,
+    bio,
+    gender,
+    interest,
+    personalityTraits,
+    lifestyleHabits,
+  });
 
   // Create Token
   const token = user.getSignedJwtToken();
@@ -67,6 +91,17 @@ exports.login = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.getMe = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id);
+  res.status(200).json({
+    success: true,
+    data: user,
+  });
+});
+
+//  @desc   Get All  User
+// @route   GET /api/v1/users
+// @access  Private
+exports.getAllUsers = asyncHandler(async (req, res, next) => {
+  const user = await User.find();
   res.status(200).json({
     success: true,
     data: user,
@@ -163,6 +198,12 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
+    photos: req.body.photos,
+    bio: req.body.bio,
+    gender: req.body.gender,
+    interest: req.body.interest,
+    personalityTraits: req.body.personalityTraits,
+    lifestyleHabits: req.body.lifestyleHabits,
   };
   const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
     new: true,
