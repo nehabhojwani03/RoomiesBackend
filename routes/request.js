@@ -8,7 +8,7 @@ const {
 const router = express.Router();
 const { protect, authorize } = require('../middleware/auth');
 
-router.route('/sendrequest').post(protect, sendRequest);
+router.route('/sendrequest').post(sendRequest);
 
 router.route('/:id').put(protect, requestStatus);
 

@@ -6,8 +6,6 @@ const Request = require('../models/Request');
 // @route   POST /api/v1/sendRequest
 // @access  Private
 exports.sendRequest = asyncHandler(async (req, res, next) => {
-  req.body.requester = req.user.id;
-
   const request = await Request.create(req.body);
   res.status(201).json({
     success: true,
